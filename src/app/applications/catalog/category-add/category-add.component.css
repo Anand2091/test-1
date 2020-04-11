@@ -1,0 +1,10 @@
+.main{
+    min-height: 900px;
+}
+.mat-radio-button {
+   padding-right: 10px;
+}
+.action button{
+    margin: 5px;
+}
+
