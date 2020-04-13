@@ -19,7 +19,7 @@ export class CategoryListComponent implements OnInit {
   }
 
 
-  displayedColumns: string[] = ['select', 'edit', 'id', 'name', 'parent', 'alias','status'];
+  displayedColumns: string[] = ['select', 'id', 'name', 'parent', 'alias','status','action'];
   dataSource = new MatTableDataSource<any>(this.categoryData);
   selection = new SelectionModel<any>(true, []);
 
