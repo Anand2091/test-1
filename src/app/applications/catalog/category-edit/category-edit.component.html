@@ -1,0 +1,100 @@
+<div class="nav-bottom-1 mat-elevation-z2">
+    <div class="container-fluid">
+        <div class="row">
+           
+
+            <div class="col-8">
+                <div >
+                    <p class="mt-2 mb-0">Catalog / Category Add</p>
+                </div>
+            </div>
+            <div class="col-4 text-right">
+                <button mat-icon-button>
+                    <mat-icon >help_outline</mat-icon>
+                </button>
+                <button mat-icon-button>
+                    <mat-icon >cached</mat-icon>
+                </button>
+                <button mat-icon-button [matMenuTriggerFor]="menu">
+                <mat-icon>more_vert</mat-icon>
+              </button>
+                <mat-menu #menu="matMenu">
+                    <button mat-menu-item routerLink="/catalog/categorylist" ><span>List Category</span></button>
+                    <button mat-menu-item routerLink="/dashboard"><span>Dashboard</span></button>
+                    <button mat-menu-item routerLink="/homeview"><span>List Product</span></button>
+                    
+                    <button mat-menu-item><span>List Attribuite</span></button>
+                </mat-menu>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- MAIN CONTENT START -->
+    <main class="main">
+        <div class="container">
+            <div class="row justify-content-center">
+                       
+                <div class="col-lg-4 mt-5 mb-3">
+                    <form [formGroup]="categoryAddForm" (ngSubmit)="categoryAddSubmit()">
+                    <mat-card>
+                        <mat-card-content>
+                        <mat-form-field >
+                            <mat-label>Category Name</mat-label>                         
+                            <input matInput  name="category_name"
+                            [formControl]="categoryAddForm.controls['category_name']" >
+                            <mat-error *ngIf="categoryAddForm.controls['category_name'].hasError('required') "> Category Name Required</mat-error>
+                        </mat-form-field>
+                       
+                        <mat-form-field >                         
+                           <mat-label>Parent Category Name</mat-label>
+                            <mat-select name="parent_category"
+                            [formControl]="categoryAddForm.controls['parent_category']">
+                                <mat-option value="0">None</mat-option>
+                                <mat-option *ngFor="let item of parentCategory;" [value]="item.id">{{item.name}}</mat-option>
+                            </mat-select>
+                            <mat-error *ngIf="categoryAddForm.controls['parent_category'].hasError('required') "> Parent Category Name </mat-error>
+                        </mat-form-field>
+                        
+                        <mat-form-field >                         
+                            <mat-label>Category Alias</mat-label>                         
+                            <input matInput  name="alias"
+                            [formControl]="categoryAddForm.controls['alias']" >
+                            <mat-error *ngIf="categoryAddForm.controls['parent_category'].hasError('required') "> Parent Category Name </mat-error>
+                          </mat-form-field>
+
+                          <mat-form-field >                         
+                            <mat-label>Meta title</mat-label>                         
+                            <input matInput  name="meta_title"
+                            [formControl]="categoryAddForm.controls['meta_title']" >
+                            
+                          </mat-form-field>
+
+                          <mat-form-field >                         
+                            <mat-label>Meta Description</mat-label>                         
+                            <input matInput  name="meta_description"
+                            [formControl]="categoryAddForm.controls['meta_description']" >
+                          </mat-form-field>
+
+                          <label id="status-label">Status</label>  <br>                  
+                            <mat-radio-group id="status-label" name="status"
+                            [formControl]="categoryAddForm.controls['status']" >
+                                <mat-radio-button value="1" color="primary"> Active </mat-radio-button>
+                                <mat-radio-button value="0">Inactive</mat-radio-button>
+                            </mat-radio-group>
+                            <br>
+                            <div class="action">
+                                <button mat-raised-button type="submit" color="primary">Save</button>
+                                <button mat-raised-button >Cancel</button>
+                            </div>
+                        </mat-card-content>
+                        </mat-card>
+                    </form> 
+                </div>
+           
+        
+            </div>
+        </div>
+    </main>
+ <!-- MAIN CONTENT END -->
+

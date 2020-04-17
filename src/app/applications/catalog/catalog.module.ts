@@ -22,11 +22,13 @@ import {
 import { CatalogRoutingModule } from './catalog-routing.module';
 import { CategoryAddComponent } from './category-add/category-add.component';
 import { CategoryListComponent } from './category-list/category-list.component';
+import { CategoryEditComponent } from './category-edit/category-edit.component';
 
 @NgModule({
   declarations: [
   CategoryAddComponent,
-  CategoryListComponent],
+  CategoryListComponent,
+  CategoryEditComponent],
   imports: [
     CommonModule,
     RouterModule.forChild(CatalogRoutingModule),

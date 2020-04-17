@@ -2,7 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import {SelectionModel} from '@angular/cdk/collections';
 import {MatTableDataSource} from '@angular/material/table';
 import { CatalogService } from '../../../shared/services/api/catalog.service';
-
+import { ActivatedRoute, Router } from "@angular/router";
+import { Meta, Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-category-list',
@@ -12,7 +13,13 @@ import { CatalogService } from '../../../shared/services/api/catalog.service';
 export class CategoryListComponent implements OnInit {
 
   categoryData:any[] = [];
-  constructor(private catalogService: CatalogService) { }
+  constructor(
+              private catalogService: CatalogService,
+              private route:ActivatedRoute,
+              private titleService: Title,
+              ) {
+    this.titleService.setTitle(this.route.snapshot.data['breadcrumb'] +' : '+ this.route.snapshot.data['title']);
+   }
 
   ngOnInit() {
     this.getAllCategory();
@@ -48,7 +55,7 @@ export class CategoryListComponent implements OnInit {
 
   getAllCategory(){
     this.catalogService.getAllCategory().subscribe(data => {
-  console.log(data);
+  
       if(data.status == true)
       {
         this.categoryData = data.category;

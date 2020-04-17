@@ -1,30 +1,23 @@
 import { Component, OnInit } from '@angular/core';
 import { Validators, FormGroup, FormControl } from '@angular/forms';
 import { Utilities } from '../../../shared/helpers/utilities';
+import { Router } from "@angular/router"
 import { CatalogService } from '../../../shared/services/api/catalog.service';
-import { ActivatedRoute, Router } from "@angular/router";
-import { Meta, Title } from '@angular/platform-browser';
 
 @Component({
-  selector: 'app-category-add',
-  templateUrl: './category-add.component.html',
-  styleUrls: ['./category-add.component.css']
+  selector: 'app-category-edit',
+  templateUrl: './category-edit.component.html',
+  styleUrls: ['./category-edit.component.css']
 })
-export class CategoryAddComponent implements OnInit {
+export class CategoryEditComponent implements OnInit {
 
   categoryAddForm: FormGroup;
   userLoginError : any;
   parentCategory : any[] = [];
   constructor(
-              private route:ActivatedRoute,
               private catalogService : CatalogService,
               private router : Router,
-              private titleService: Title,
-              ) {
-
-                this.titleService.setTitle(this.route.snapshot.data['breadcrumb'] +' : '+ this.route.snapshot.data['title']);
-               
-               }
+              ) { }
 
   ngOnInit() {
     this.createForm();

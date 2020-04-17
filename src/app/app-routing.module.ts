@@ -35,7 +35,7 @@ const routes: Routes = [
       { 
         path: 'catalog',
         loadChildren: './applications/catalog/catalog.module#CatalogModule', 
-        data: { title: 'Dashboard', breadcrumb: 'DASHBOARD'}
+        data: { title: 'Catalog', breadcrumb: 'Catalog'}
       },
     ]
   },
